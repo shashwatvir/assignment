@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment2</title>
+    </head>
+    <body>
+        <label for="sentence">Enter a sentence</label>
+        <input type="text" id="sentence" name="sentence">
+        <label for="letter">Enter any letter</label>
+        <input type="text" id="letter" name="letter" maxlength="1">
+        <button id="button" onclick="function()">Submit</button>
+        <script>
+            let sentence = document.getElementById('sentence');
+            let letter = document.getElementById('letter');
+            let result = document.getElementById('result');
+            let button = document.getElementById('button');
+
+            button.addEventListener('click', function () {
+            var givenSentence = sentence.value;
+            var givenLetter = letter.value;
+            var indexofLetter = givenSentence.indexOf(givenLetter);
+            if (givenLetter.length === 0 || givenSentence.length === 0) {
+            alert("Please Enter The Text !!")
+            } else if (indexofLetter == -1) {
+            result.innerHTML = `<div id="dataWantToShow">
+            <span>The Search result:</span>
+            <div id="dataresult">Please enter valid letter !</div>
+            <div>`;
+            } else {
+            var returnData = givenSentence.substring(indexofLetter + 1);
+            var reverseData = reverse(returnData);
+            console.log(returnData);
+            result.innerHTML = `<div id="dataWantToShow">
+                     <span>The Search result:</span>
+                     <div id="dataresult">${returnData.trim()}</div>
+                     </div>`;
+            }
+            sentence.value = "";
+            letter.value = "";
+            );
+        </script>
+    </body>
+</html>
